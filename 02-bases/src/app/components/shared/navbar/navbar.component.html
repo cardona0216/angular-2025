@@ -1,0 +1,19 @@
+
+<!-- 
+ en esta barra de navegacion usaremos  el router link que es la manera en que se pasa de un 
+ componente a otro, o me jor dicho es como se navega en angular  
+
+-->
+
+<!-- 
+clase donde veremos el routerLinkactive es es para saber o referenciar en que pagina estamos
+es para saber en cual enlace estoy ubicado
+-->
+
+<nav>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Contador</a>
+    <a routerLink="/heroe" routerLinkActive="active">Heroe</a>
+    <a [routerLink]="['/signal']" [routerLinkActive]="'active'">Signal</a>
+    <a routerLink="/dragonball" routerLinkActive="active">Dragonball</a>
+    <a routerLink="/dragonball-super" routerLinkActive="active">Dragonball super</a>
+</nav>

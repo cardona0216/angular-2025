@@ -1,0 +1,28 @@
+<h1>aqui estamos mirando los output</h1>
+<h3>Agregar personaje: {{name()}}</h3>
+
+        <!-- para asignar el valor de un atributo usamos los[] -->
+         <!-- para apuntar el input usamos una referencia local con el #referencialocal -->
+        <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Nombre"
+            [value]="name()"
+            (change)="name.set(txtName.value)"
+            (input)="name.set(txtName.value)"
+            #txtName         
+            >
+      
+        <input 
+            type="number" 
+            class="form-control mt-2" 
+            placeholder="Poder"
+            [value]="power()"
+            (input)="power.set(+txtpower.value)"
+            #txtpower
+            >
+            <!--  hay que hacer una conversion cpn el + ya que los input siempre toman todo como un string -->
+            <!-- (input)="power.set(toNumber(txtnumpower.value))" -->
+
+
+        <button (click)="agragarPersonajeEmit()" class="mt-2 btn btn-primary">Agragar</button>

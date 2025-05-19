@@ -1,0 +1,31 @@
+<p>heroe works!</p>
+
+<h1>{{ name() }}</h1>
+
+<h1>{{ age() }}</h1>
+
+<dl>
+  <td>Nombre:{{ name()  }}</td>
+  <dd></dd>
+  
+
+  <td>Edad: {{ age() }}</td>
+  <dd>{{ age() }}</dd>
+ 
+  <td>Método:</td>
+  <dd>{{ herodescription() }}</dd>
+
+  <td>Capitalizado:</td>
+  <!-- ! Intentar  -->
+  <!-- <dd> {{ capi() }} </dd> -->
+  <dd> {{ name() | uppercase }} </dd>
+</dl>
+
+<button (click)="changeHero()" class="btn btn-primary mx-2">
+  Cambiar nombre
+</button>
+
+<button class="btn btn-primary" (click)="chageAge()">Cambiar edad</button>
+
+
+<button (click)="resetForm()" class="btn btn-primary mx-2">Reset</button>

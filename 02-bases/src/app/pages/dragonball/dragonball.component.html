@@ -1,0 +1,66 @@
+<h1> Dragonball Pages</h1>
+<hr>
+
+
+<section class="row">
+    <div class="col-12 col-sm-6">
+        <h3>Agregar personaje: {{name()}}</h3>
+        <!-- para asignar el valor de un atributo usamos los[] -->
+         <!-- para apuntar el input usamos una referencia local con el #referencialocal -->
+        <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Nombre"
+            [value]="name()"
+            (change)="name.set(txtName.value)"
+            (input)="name.set(txtName.value)"
+            #txtName         
+            >
+      
+        <input 
+            type="number" 
+            class="form-control mt-2" 
+            placeholder="Poder"
+            [value]="power()"
+            (input)="power.set(+txtpower.value)"
+            #txtpower
+            >
+            <!--  hay que hacer una conversion cpn el + ya que los input siempre toman todo como un string -->
+            <!-- (input)="power.set(toNumber(txtnumpower.value))" -->
+
+
+        <button (click)="addCharacter()" class="mt-2 btn btn-primary">Agragar</button>
+    </div>
+    <div class="col-12 col-sm-6">
+        <h3>Listado de personajes fuertes</h3>
+        <!-- 
+            para iterar con elementos que tengamos en algun lugar usaremos el @for esta es una nueva forma de iterar una lista de elementos
+            para esto usaremos el @for que es la nueva forma de hacerlo en angular, es una directiva estructural que nos permite
+            cambiar la estructura de nuestro html
+        -->
+        <ul>
+            @for (character of characters(); track character.id; let  idx= $index) {
+                <!-- vamos a darle estilos o clases de forma condicional usaremos el ngclass -->
+
+                <!-- vamos a usar el @if, para condicionar que aparezca algo en el html solo si cumple alguna condicion -->
+                 @if (character.power > 500) {
+
+                     <li>
+                         <span>{{idx + 1}}-{{character.name}}</span>
+                         <strong 
+                         [class.text-danger]="character.power > 9000"
+                         [class.text-primary]="character.power <  9000" 
+                         >({{character.power}})</strong>
+                         <!--  -->
+                         
+                         <!-- [ngClass]="powerClasses()" -->
+                         <!-- <strong class="text-danger"> ({{caracter.power}})</strong> -->
+                     </li>
+
+                 } @else {
+                    <li><strong>Aqui no hay nadie</strong></li>
+                 } }
+          
+        </ul>
+    </div>
+</section>

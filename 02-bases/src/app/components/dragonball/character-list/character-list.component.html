@@ -1,0 +1,30 @@
+<h3>{{lisname()}}</h3>
+<!-- 
+    para iterar con elementos que tengamos en algun lugar usaremos el @for esta es una nueva forma de iterar una lista de elementos
+    para esto usaremos el @for que es la nueva forma de hacerlo en angular, es una directiva estructural que nos permite
+    cambiar la estructura de nuestro html
+-->
+<ul>
+    @for (character of caracterhijo(); track character.id; let  idx= $index) {
+        <!-- vamos a darle estilos o clases de forma condicional usaremos el ngclass -->
+
+        <!-- vamos a usar el @if, para condicionar que aparezca algo en el html solo si cumple alguna condicion -->
+         @if (character.power > 500) {
+
+             <li>
+                 <span>{{idx + 1}}-{{character.name}}</span>
+                 <strong 
+                 [class.text-danger]="character.power > 9000"
+                 [class.text-primary]="character.power <  9000" 
+                 >({{character.power}})</strong>
+                 <!--  -->
+                 
+                 <!-- [ngClass]="powerClasses()" -->
+                 <!-- <strong class="text-danger"> ({{caracter.power}})</strong> -->
+             </li>
+
+         } @else {
+            <li><strong>Aqui no hay nadie</strong></li>
+         } }
+  
+</ul>
