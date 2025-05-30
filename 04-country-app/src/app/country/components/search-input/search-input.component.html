@@ -5,18 +5,22 @@
         class="input input-bordered mr-2 w-56"
         [placeholder]="placeholder()"
         autofocus
+        (keyup.enter)="buscar.emit(txtbuscarcapital.value)"
         #txtbuscarcapital
-        (keyup.enter)="onBuscarCapital(txtbuscarcapital.value)"
-      [placeholder]="placeholder()"
+        [placeholder]="placeholder()"
         
         >
-        <!-- (keyup.enter)="buscar.emit(txtbuscarcapital.value)" -->
-
+       
+        
+        <!-- 
+         (keyup.enter)="onBuscarCapital(txtbuscarcapital.value)"
+        (keyup.enter)="onBuscarCapital2(txtbuscarcapital.value)" -->
     <button
         class="btn btn-primary"
         (click)="buscar.emit(txtbuscarcapital.value)"
+       
         >
-        <!-- (click)="onBuscarCapital(txtbuscarcapital.value)" -->
+        <!--  (click)="onBuscarCapital(txtbuscarcapital.value)" -->
       {{boton()}}
     </button>
 

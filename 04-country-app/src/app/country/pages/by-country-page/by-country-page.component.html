@@ -1,5 +1,11 @@
 <country-search-input placeholder="Buscar por pais"
     boton="Buscar pais"
-/>
+    (buscar)="queryPais.set($event)"
+    />
+    <!-- (buscar)="queryPais.set($event)" -->
 
-<country-list/>
+ @if (bypaisResource.error()) {
+            <h3>{{bypaisResource.error()}}</h3>
+        }@if(bypaisResource.hasValue()){<country-list [paises]="bypaisResource.value()!" />}
+
+

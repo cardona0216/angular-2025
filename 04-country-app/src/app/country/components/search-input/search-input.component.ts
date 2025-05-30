@@ -8,14 +8,18 @@ import { ChangeDetectionStrategy, Component, EventEmitter, input, Output, output
 })
 export class SearchInputComponent {
 
-   capital:OutputEmitterRef<string> = output();
+  //  capital:OutputEmitterRef<string> = output();
+  //  pais:OutputEmitterRef<string> = output();
 
    buscar = output<string>()
    placeholder = input('buscar')
 
     boton= input()
 
-  onBuscarCapital(valor: string) {
-    this.capital.emit(valor);
-  }
+  // onBuscarCapital(query: string) {
+  //   this.capital.emit(query);
+  // }
+  // onBuscarCapital2(query: string) {
+  //   this.pais.emit(query);
+  // }
  }
