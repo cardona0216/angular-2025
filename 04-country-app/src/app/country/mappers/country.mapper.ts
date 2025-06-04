@@ -8,10 +8,17 @@ export class CountryMapper {
         return{
             cca2: country.cca2,
             flag: country.flag,
-            flagSvg: country.flags.svg,
+            flagSvg: country.flags.png,
             common: country.translations['spa'].common ?? 'No idiona en español',
             capital: country.capital,
             population: country.population,
+            borders: country.borders,
+            region: country.region,
+            maps: country.maps.googleMaps,
+            subregion:country.subregion,
+            area:country.area,
+            alt: country.flags.alt
+           
 
         }
 

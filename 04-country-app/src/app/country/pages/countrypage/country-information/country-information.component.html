@@ -1,0 +1,88 @@
+
+<h1 class="text-center text-3xl flex items-center justify-center gap-2">
+    <img [src]="informacionPais().flagSvg" alt="Bandera" class="w-8 h-6 inline-block" />
+            {{ informacionPais().common }}
+</h1>
+
+<section class="stats shadow">
+  <div class="stat place-items-center">
+    <div class="stat-title">Poblacion</div>
+    <div class="stat-value">{{informacionPais().population | number}}</div>
+    <div class="stat-desc">Desde {{currentYear()}}</div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title">Pais</div>
+    <div class="stat-value text-secondary">{{informacionPais().common}}</div>
+    <div class="stat-desc text-secondary">{{informacionPais().region}}</div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title">Sub region</div>
+    <div class="stat-value">{{informacionPais().subregion}}</div>
+    <div class="stat-desc">{{informacionPais().region}}</div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title">Fronteras</div>
+    <div class="stat-value">{{informacionPais().borders}}</div>
+    <div class="stat-desc">{{informacionPais().common}}</div>
+  </div>
+</section>
+
+<section class="diff aspect-[16/9]" tabindex="0">
+  <div class="diff-item-1" role="img" tabindex="0">
+    <img [alt]="informacionPais().common" [src]="informacionPais().flagSvg" />
+  </div>
+  <div class="diff-item-2" role="img">
+     <img class="blur bg-opacity-20" [alt]="informacionPais().common" [src]="informacionPais().flagSvg" />
+  </div>
+  <div class="diff-resizer"></div>
+</section>
+<!-- <section class="mt-5">
+<table class="table table-md mt-2 w-full">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Bandera</th>
+                <th>Nombre</th>
+                <th>Capital</th>
+                <th>Poblacion</th>
+                <th>Fronteras</th>
+                <th>Region</th>
+                <th>Mapa</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                   
+                    <td>{{informacionPais().flag}}</td>
+                    <td>
+                        <img [src]="informacionPais().flagSvg" [alt]="informacionPais().common"
+                            class="w-10"
+                        >
+                        
+                    </td>
+                    <td>{{informacionPais().common}}</td>
+                    <td>{{informacionPais().capital}}</td>
+                    <td>{{informacionPais().population | number}}</td>
+                    <td>{{informacionPais().borders}}</td>
+                    <td>{{informacionPais().region}}</td>
+                    <td>
+                        <a [href]="informacionPais().maps" target="_blank"  class="link-primary cursor-pointer">
+                             Ver en el mapa
+                        </a>
+                    </td>
+                </tr>
+        </tbody>
+
+    </table>
+</section> -->
+
+
+
+
+
+
+

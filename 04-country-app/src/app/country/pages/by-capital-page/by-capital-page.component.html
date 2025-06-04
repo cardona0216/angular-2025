@@ -7,13 +7,19 @@
         />
 
 
-        @if (capitalResource.error()) {
+        <!-- @if (capitalResource.error()) {
             <h3>{{capitalResource.error()}}</h3>
-        }@if(capitalResource.hasValue()){<country-list [paises]="capitalResource.value()!" />}
+        }@if(capitalResource.hasValue()){<country-list [paises]="capitalResource.value()!" />} -->
 
 
 
+   <country-list 
+            [paises]="capitalResource.value() ?? []"
+            [errorMensaje]="capitalResource.error()"
+            [isEmpty]="capitalResource.value()?.length === 0"
+            [isLoading]="capitalResource.isLoading()"
 
+            />
 
 
 

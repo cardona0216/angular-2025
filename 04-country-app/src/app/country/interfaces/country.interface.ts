@@ -7,6 +7,12 @@ export interface Country{
     common:string,
     capital:string[]
     population:number,
+    borders?: string[],
+    region:string
+    maps: string,
+    subregion:string,
+    area:number,
+    alt?: string
    
    
 }
