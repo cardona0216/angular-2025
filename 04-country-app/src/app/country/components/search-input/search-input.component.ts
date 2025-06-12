@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, input, Output, output, OutputEmitterRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, EffectCleanupRegisterFn, EventEmitter, input, linkedSignal, Output, output, OutputEmitterRef, signal } from '@angular/core';
 
 @Component({
   selector: 'country-search-input',
@@ -12,9 +12,34 @@ export class SearchInputComponent {
   //  pais:OutputEmitterRef<string> = output();
 
    buscar = output<string>()
-   placeholder = input('buscar')
+   placeholder = input()
+   boton= input()
+   debaucetime = input(500)
 
-    boton= input()
+   valorInicial = input<string>()
+   inputValue = linkedSignal<string>(() => this.valorInicial() ?? '')
+   
+   //vamos a crear un debaounce (busqueda automaitica)
+   busquedaAutomatica = effect((onCleanup: EffectCleanupRegisterFn) =>{
+    const busquedaValue = this.inputValue()
+
+    const timeout = setTimeout(() => {
+      this.buscar.emit(busquedaValue)
+      
+    }, this.debaucetime());
+
+    onCleanup(() =>{
+      clearTimeout(timeout)
+    })
+
+
+   })
+
+
+
+
+
+
 
   // onBuscarCapital(query: string) {
   //   this.capital.emit(query);

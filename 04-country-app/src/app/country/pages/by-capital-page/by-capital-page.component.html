@@ -1,26 +1,24 @@
 
 <!-- //input para buscar -->
 <country-search-input 
-        (buscar)="query.set($event)"
         placeholder = "Buscar por capital"
-        boton="Buscar por capital"
+        (buscar)="query.set($event)"
+        [boton]="botonCapital()"
+        [debaucetime]="1000"
+        [valorInicial]="query()"
+        /> 
+
+<country-list 
+        [paises]="capitalResource.value() ?? []"
+        [errorMensaje]="capitalResource.error()"
+        [isEmpty]="capitalResource.value()?.length === 0"
+        [isLoading]="capitalResource.isLoading()"
         />
-
-
-        <!-- @if (capitalResource.error()) {
-            <h3>{{capitalResource.error()}}</h3>
-        }@if(capitalResource.hasValue()){<country-list [paises]="capitalResource.value()!" />} -->
-
-
-
-   <country-list 
-            [paises]="capitalResource.value() ?? []"
-            [errorMensaje]="capitalResource.error()"
-            [isEmpty]="capitalResource.value()?.length === 0"
-            [isLoading]="capitalResource.isLoading()"
-
-            />
-
+        
+        
+                <!-- @if (capitalResource.error()) {
+                    <h3>{{capitalResource.error()}}</h3>
+                }@if(capitalResource.hasValue()){<country-list [paises]="capitalResource.value()!" />} -->
 
 
 

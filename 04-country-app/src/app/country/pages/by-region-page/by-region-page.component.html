@@ -1,1 +1,41 @@
-<country-list [paises]="countries()"/>
+
+
+
+<h1 class="text-2xl">Por region</h1>
+<h3 class="text-lg">Seleccione una region</h3>
+
+
+<section class="row mt-2">
+    <div class="flex-col">
+
+        @for (region of regions; track region) {
+            <button class="btn mr-2 btn-outline w-[100]"
+                (click)="selecioneRegion.set(region)"
+                [class.btn-primary]="selecioneRegion() === region"
+                >
+                <!-- (click)="selecioneRegiones(region)" -->
+                {{region}}
+            </button>
+        }
+
+    </div>
+</section>
+<!-- <div>
+    @for (item of regions; track $index) {
+        <button class="btn mr-2 active:{{item}}"
+        (click)="buscarRegion(item)"
+       
+
+        >{{item}}</button>
+
+    }
+</div> -->
+
+
+  <country-list 
+            [paises]="bypaisResource.value() ?? []"
+            [errorMensaje]="bypaisResource.error()"
+            [isEmpty]="bypaisResource.value()?.length === 0"
+            [isLoading]="bypaisResource.isLoading()"
+
+            />

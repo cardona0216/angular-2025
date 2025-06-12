@@ -1,6 +1,10 @@
-<country-search-input placeholder="Buscar por pais"
-    boton="Buscar pais"
+<country-search-input 
+    placeholder="Buscar por pais"
+    [boton]="busquedavalue()"
     (buscar)="queryPais.set($event)"
+    [debaucetime]="3000"
+    [valorInicial]="queryPais()"
+    
     />
     <!-- (buscar)="queryPais.set($event)" -->
 

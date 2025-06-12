@@ -5,10 +5,9 @@
         class="input input-bordered mr-2 w-56"
         [placeholder]="placeholder()"
         autofocus
-        (keyup.enter)="buscar.emit(txtbuscarcapital.value)"
+        (keyup)="inputValue.set(txtbuscarcapital.value)"
         #txtbuscarcapital
-        [placeholder]="placeholder()"
-        
+        [value]="inputValue()"
         >
        
         
