@@ -9,6 +9,22 @@ import { Country } from '../../interfaces/country.interface';
 import { Region } from '../../interfaces/region.interface';
 
 
+//funcion para validar que si sea una region
+
+function validarQueryParam(queryParam:string): Region {
+  queryParam = queryParam.toLowerCase()
+  const validarregion: Record<string, Region> = {
+    'Africa':'Africa',
+    'Americas':'Americas',
+    'Asia':'Asia',
+    'Europe':'Europe',
+    'Oceania':'Oceania',
+    'Antarctic':'Antarctic',
+  };
+
+return validarregion[queryParam] ?? 'Americas'
+}
+
 
 @Component({
   selector: 'by-region-page',
@@ -38,7 +54,7 @@ export class ByRegionPageComponent {
 queryParamsRegion = this.rutaActiva.snapshot.queryParamMap.get('query') ?? ''
 
 
- selecioneRegion = linkedSignal<Region | null >(() => this.queryParamsRegion as Region)
+ selecioneRegion = linkedSignal<Region | null >(() => validarQueryParam(this.queryParamsRegion) )
   
  bypaisResource = rxResource({
     request: () => ( { region:this.selecioneRegion()}),
