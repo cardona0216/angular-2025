@@ -1,0 +1,85 @@
+<section class="mx-10">
+  <h1 class="text-2xl font-bold text-center"></h1>
+  <h3 class="text-xl font-thin"></h3>
+</section>
+
+<app-section
+[title] = title()
+subtitle="Pipes de formatos de fechas"
+/>
+
+<p class="text-center text-base font-light mx-auto max-w-2xl my-4">
+  ¿Qué es el DatePipe en Angular? <br>
+  El DatePipe es un pipe incorporado en Angular que permite transformar y mostrar valores de tipo fecha (Date) en diferentes formatos de manera sencilla y legible en las plantillas. Es muy útil para mostrar fechas y horas de acuerdo a las necesidades de tu aplicación, ya sea en formato corto, largo, con hora, solo la fecha, etc.
+</p>
+
+
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <div class="stat">
+    <div class="stat-title">Date Pipe</div>
+    <div class="stat-value">{{fechaActual() | date}}</div>
+    <div class="stat-desc">{{fechaActual() | date}}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">date: 'short'</div>
+    <div class="stat-value">{{fechaActual() | date:'short'}}</div>
+    <div class="stat-desc">{{fechaActual() }}</div>
+
+    <div class="stat-title">date: 'long'</div>
+    <div class="stat-value">{{fechaActual() | date:'long'}}</div>
+    <div class="stat-desc">{{fechaActual() | date:'long'}}</div>
+
+    <div class="stat-title">date: 'full'</div>
+    <div class="stat-value">{{fechaActual() | date:'full'}}</div>
+    <div class="stat-desc">{{fechaActual() | date:'full'}}</div>
+  </div>
+
+</div>
+
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <div class="stat">
+    <div class="stat-title">Date custom 'yyyy-MM-dd HH:mm:ss'</div>
+    <div class="stat-value">{{fechaActual() | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+    <div class="stat-desc">{{fechaActual() | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">date: 'mediumTime h:mm:ss a'</div>
+    <div class="stat-value">{{fechaActual() | date:'h:mm:ss a'}}</div>
+    <div class="stat-desc">{{fechaActual() | date:'mediumTime'}}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">date | longDate | MMMM d, y</div>
+    <div class="stat-value">{{fechaActual() | date:'MMMM d, y'}}</div>
+    <div class="stat-desc">{{fechaActual() | date:'longDate'}}</div>
+  </div>
+</div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <div class="stat">
+    <div class="stat-title">Date custom 'shortDate' date:'M/d/yy'</div>
+    <div class="stat-value">{{fechaActual() | date:'M/d/yy'}}</div>
+    <div class="stat-desc">{{fechaActual() | date:'shortDate'}}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">date: 'fullDate EEEE, MMMM d, y'</div>
+    <div class="stat-value">{{fechaActual() | date:'EEEE, MMMM d, y'}}</div>
+    <div class="stat-desc">{{fechaActual() | date:'fullDate'}}</div>
+  </div>
+
+</div>
+<div class="divider mb-4"></div>
+<div class=" flex flex-row gap-2">
+  <h1 class="text-2xl font-bold">Local actual</h1>
+  <span class="badge badge-secondary">{{currentLocale()}}</span>
+  <button class=" btn btn-primary" (click)="cambiarLocale('fr')"> Cambiar a Frances</button>
+  <button class=" btn btn-primary" (click)="cambiarLocale('en')"> Cambiar a English</button>
+  <button class=" btn btn-primary" (click)="cambiarLocale('es')"> Cambiar a Español</button>
+ 
+</div>
+

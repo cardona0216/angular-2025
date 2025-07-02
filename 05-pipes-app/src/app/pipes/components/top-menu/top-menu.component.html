@@ -1,0 +1,8 @@
+<ul class="menu menu-horizontal bg-base-200 rounded-box my-2">
+    @for (ruta of rutas; track ruta.paht) {
+        <li>
+            <a [routerLink]="ruta.paht" routerLinkActive="text-accent" >{{ruta.titulo}}</a>
+        </li>
+
+    }
+</ul>

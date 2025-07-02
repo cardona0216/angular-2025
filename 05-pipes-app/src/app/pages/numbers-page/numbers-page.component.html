@@ -1,0 +1,47 @@
+
+
+<app-section
+[title] = title()
+subtitle="Pipes incluidos en angular"
+/>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <!-- Pipe number -->
+  <div class="stat text-justify">
+    <div class="stat-title">Pipe <code>number</code></div>
+    <p class="w-full">
+      El pipe <strong><code>number</code></strong> en Angular se utiliza para formatear números como texto, permitiendo definir la cantidad de decimales y el formato de separación de miles. Es útil para mostrar cantidades de manera legible y estandarizada.
+      Se aplica usando el símbolo <code>|</code> seguido de <code>number</code> en el template.
+    </p>
+    <p><strong>Ejemplo:</strong></p>
+    <p><code>{{'{{ totalventa() | number:"1.2-2" }}'}}</code></p>
+    <div class="stat-desc">Valor original: {{totalventa()}}</div>
+    <div class="stat-value">{{totalventa() | number: '1.2-2' }}</div>
+  </div>
+
+  <!-- Pipe currency -->
+  <div class="stat text-justify">
+    <div class="stat-title">Pipe <code>currency</code></div>
+    <p class="w-full">
+      El pipe <strong><code>currency</code></strong> en Angular se utiliza para formatear un número como una cantidad monetaria, mostrando el símbolo de la moneda y el formato adecuado según la configuración regional.
+      Se aplica usando el símbolo <code>|</code> seguido de <code>currency</code> y el código de la moneda en el template.
+    </p>
+    <p><strong>Ejemplo:</strong></p>
+    <p><code>{{'{{ totalventa() | currency:"COP" }}'}}</code></p>
+    <div class="stat-desc">Valor original: {{totalventa()}}</div>
+    <div class="stat-value">{{totalventa() | currency: 'CAD' }}</div>
+  </div>
+
+  <!-- Pipe percent -->
+  <div class="stat text-justify">
+    <div class="stat-title">Pipe <code>percent</code></div>
+    <p class="w-full">
+      El pipe <strong><code>percent</code></strong> en Angular se utiliza para mostrar un número como porcentaje, multiplicando el valor por 100 y agregando el símbolo <code>%</code>.
+      Se aplica usando el símbolo <code>|</code> seguido de <code>percent</code> en el template.
+    </p>
+    <p><strong>Ejemplo:</strong></p>
+    <p><code>{{'{{ porcentajeVenta() | percent:"1.2-2" }}'}}</code></p>
+    <div class="stat-desc">Valor original: {{porcentajeVenta()}}</div>
+    <div class="stat-value">{{porcentajeVenta() | percent:'1.2-2'}}</div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+
+
+<app-section
+title ="Pipes de angular"
+subtitle="Pipes incluidos en angular"
+/>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <!--  -->
+  <div class="stat text-justify">
+    <div class="stat-title">Pipes uppercase</div>
+    <p class="w-full">
+      El pipe <strong><code>uppercase</code></strong> en Angular se utiliza para
+      convertir todo el texto en **mayúsculas**. Es útil cuando quieres mostrar
+      contenido en un formato más destacado o uniforme.
+      Se aplica usando el símbolo <code>|</code> seguido de <code>uppercase</code> en el template.
+    </p>
+    <p><strong>Ejemplo:</strong></p>
+    <p>{{ejemplomayusculas() | uppercase}}>
+      
+      <div class="stat-desc">estado original: {{nombreMinusculaLowercase()}}</div>
+      <div class="stat-value">{{nombreMinusculaLowercase() | uppercase }}</div>
+      
+    </div>
+    
+    <!--  -->
+    
+    <div class="stat text-justify">
+      <div class="stat-title">Pipes lowercase</div>
+      
+      <p>{{ejemplominusculas()| lowercase}}>
+        <p><strong>Ejemplo:</strong></p>
+        <p class="w-full">
+          EL PIPE LOWERCASE EN ANGULAR SE UTILIZA PARA CONVERTIR TODO EL TEXTO EN MINÚSCULAS. ES ÚTIL CUANDO DESEAS
+          ESTANDARIZAR EL TEXTO O MOSTRARLO EN UN ESTILO MÁS SIMPLE. SE APLICA USANDO EL SÍMBOLO | SEGUIDO DE LOWERCASE EN
+          EL TEMPLATE.
+        </p>
+        
+        <div class="stat-desc">estado original:{{nombreMayusculaUppercase()}}</div>
+        <div class="stat-value">{{nombreMayusculaUppercase() | lowercase}}</div>
+        
+      </div>
+      
+      
+      <div class="stat">
+        <div class="stat-title">Full pipe titlecase</div>
+        <p>{{fullName() | titlecase}}>
+          <p><strong>Ejemplo:</strong></p>
+        <p>
+          eL PiPe <code>tITleCAse</code> En aNguLar cONvIerTe lA PrIMeRa LeTra De cAdA pAlAbrA a MaYúScULa.
+          eS úTiL PaRa nOMbRes, TíTuLoS U oRaCiOnEs dOnDe sE ReQuIeRe fOrMaTo cApItAlIzAdO.
+          sE aPLiCa uSaNdO eL SíMbOLo <code>|</code> SeGuIdO dE <code>tITleCAse</code>.
+        </p>
+        <div class="stat-desc"> Estado Original:{{nombrefullName()}}</div>
+    <div class="stat-value">{{nombrefullName() | titlecase }}</div>
+  </div>
+</div>
