@@ -1,17 +1,18 @@
 <h2>Reactivos: <small> Dinámicos </small></h2>
 <hr>
 
-<form autocomplete="off">
+<form autocomplete="off" [formGroup]="formularioDimamico" (ngSubmit)="onSubmit()">
 
     <!-- Nombre -->
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre</label>
         <div class="col-sm-9">
-            <input class="form-control"
-                   placeholder="Nombre de la persona">
-            <span class="form-text text-danger">
-                   error message
-            </span>
+            <input class="form-control" placeholder="Nombre de la persona" formControlName="name">
+            @if (formUtils.campovalido(formularioDimamico, 'name')) {
+                <span class="form-text text-danger">
+                  {{formUtils.mensajecampovalidado(formularioDimamico, 'name')}}
+                </span>
+            }
         </div>
     </div>
 
@@ -21,12 +22,16 @@
         <div class="col-sm-9">
 
             <div class="input-group">
-                <input class="form-control"
-                       placeholder="Agregar favorito">
+                <input class="form-control" placeholder="Agregar favorito"
+                 [formControl]="nuevojuego"
+                 (keydown.enter)="onAddFavorite()"
+                 (keydown.enter)="$event.preventDefault()"
+                >
 
 
-                <button class="btn btn-outline-primary"
-                        type="button">
+                <button class="btn btn-outline-primary" type="button"
+                    (click)="onAddFavorite()"
+                >
                     Agregar favorito
                 </button>
             </div>
@@ -37,23 +42,38 @@
     <!-- Lista de Juegos Favoritos -->
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Favoritos</label>
-        <div class="col-sm-9">
+        <div class="col-sm-9" formArrayName="favoritesGames">
 
+            @for (favoritesGame of favoritesGames.controls; track $index; let i = $index) {
             <div class="mb-1">
 
                 <div class="input-group">
-                    <input class="form-control">
+                    <input 
+                        class="form-control"
+                        [formControlName]="i">
 
-                    <button class="btn btn-outline-danger"
-                            type="button">
-                      Eliminar
-                  </button>
+                    <button class="btn btn-outline-danger" type="button" (click)="eliminarJuego(i)">
+                        Eliminar
+                    </button>
                 </div>
+                 @if (formUtils.isValidFieldInArray(favoritesGames, i)) {
                 <span class="form-text text-danger">
-                   Este campo es requerido
+                   {{formUtils.mensajecampovalidadoArray(favoritesGames, i)}}
                 </span>
+            }
+                <!-- <span class="form-text text-danger">
+                    Este campo es requerido
+                </span> -->
 
             </div>
+            }
+
+               @if (formUtils.campovalido(formularioDimamico, 'favoritesGames')) {
+                <span class="form-text text-danger">
+                 Debe de contener al menor dos juegos
+                </span>
+            }
+            
 
         </div>
     </div>
@@ -62,10 +82,8 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <button type="submit"
-                    class="btn btn-primary float-end"
-                    >
-                    <!-- [disabled]="myForm.invalid" -->
+            <button type="submit" class="btn btn-primary float-end"  >
+                <!-- [disabled]="formularioDimamico.invalid" -->
                 Guardar
             </button>
         </div>
@@ -77,13 +95,13 @@
 
 
 <span>Valid</span>
-<pre>{{ 'object' | json }}</pre>
+<pre>{{ formularioDimamico.valid | json }}</pre>
 <br>
 
 <span>Value</span>
-<pre>{{ 'object' | json }}</pre>
+<pre>{{ formularioDimamico.value | json }}</pre>
 <br>
 
 <span>Agregar Juego</span>
-<pre>{{ 'object' | json }}</pre>
-<pre>{{ 'object' | json }}</pre>
+<pre>{{ formularioDimamico.controls['favoritesGames'].errors| json }}</pre>
+<pre>{{ formularioDimamico.controls['favoritesGames'].value | json }}</pre>

@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col">
 
-        <form autocomplete="off">
+        <form autocomplete="off" [formGroup]="miformulario" (ngSubmit)="onSave()">
 
             <!-- Campo de producto -->
             <div class="mb-3 row">
@@ -13,12 +13,15 @@
 
                     <input type="text"
                            class="form-control"
-                           placeholder="Nombre del producto">
+                           placeholder="Nombre del producto"
+                           formControlName="nombre_producto">
+                    @if (formUtils.campovalido(miformulario,'nombre_producto')) {
+                        <span class="form-text text-danger">
+                            <!-- Debe de ser de 3 letras -->
+                          {{formUtils.mensajecampovalidado(miformulario, 'nombre_producto')}}
+                        </span>
 
-                    <span class="form-text text-danger">
-                        <!-- Debe de ser de 3 letras -->
-                        error message
-                    </span>
+                    }
                 </div>
             </div>
 
@@ -28,10 +31,15 @@
                 <div class="col-sm-9">
                     <input type="number"
                            class="form-control"
-                           placeholder="Precio del producto">
-                    <span class="form-text text-danger">
-                        El precio debe de ser 0 o mayor
-                    </span>
+                           placeholder="Precio del producto"
+                           formControlName="precio">
+                       @if (formUtils.campovalido(miformulario,'precio')) {
+                        <span class="form-text text-danger">
+                            <!-- Debe de ser de 3 letras -->
+                          {{formUtils.mensajecampovalidado(miformulario, 'precio')}}
+                        </span>
+
+                    }
                 </div>
             </div>
 
@@ -41,11 +49,16 @@
                 <div class="col-sm-9">
                     <input type="number"
                            class="form-control"
-                           placeholder="Existencias del producto">
+                           placeholder="Existencias del producto"
+                           formControlName="cantidad">
 
-                    <span class="form-text text-danger">
-                         Las existencias deben de ser 0 o mayor
-                    </span>
+                        @if (formUtils.campovalido(miformulario,'cantidad')) {
+                        <span class="form-text text-danger">
+                            <!-- Debe de ser de 3 letras -->
+                          {{formUtils.mensajecampovalidado(miformulario, 'cantidad')}}
+                        </span>
+
+                    }
                 </div>
             </div>
 
@@ -73,21 +86,30 @@
     <div class="col">
 
         <span>Valid</span>
-        <pre>{{ 'objeto' | json }}</pre>
+        <pre>{{ miformulario.valid | json }}</pre>
 
         <span>Pristine</span>
-        <pre>{{ 'objeto' | json }}</pre>
+        <pre>{{ miformulario.pristine | json }}</pre>
 
         <span>Touched</span>
-        <pre>{{ 'objeto' | json }}</pre>
+        <pre>{{ miformulario.touched | json }}</pre>
 
         <span>Value</span>
-        <pre>{{ 'objeto' | json }}</pre>
+        <pre>{{ miformulario.value | json }}</pre>
 
+        <span>Errores nombre_producto</span>
+        <pre>{{ miformulario.controls['nombre_producto'].errors| json }}</pre>
+        <span>Errores precio</span>
+        <pre>{{ miformulario.controls['precio'].errors| json }}</pre>
+        <span>Errores cantidad</span>
+        <pre>{{ miformulario.controls['cantidad'].errors| json }}</pre>
+
+        
         <span>Precio</span>
-        <pre>{{ 'objeto' | json }}</pre>
-
+        <pre>{{ miformulario.controls['precio'].value | json }}</pre>
+        
         <span>Producto</span>
-        <pre>{{ 'objeto' | json }}</pre>
+        <pre>{{ miformulario.controls['nombre_producto'].value | json }}</pre>
+
     </div>
 </div>
